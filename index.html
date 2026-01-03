@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>happy birthday keyzia</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'poppins', sans-serif;
+  background: linear-gradient(180deg, #0a1a3a, #102b5c);
+  color: #eaf2ff;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* bunga background */
+.flower {
+  position: fixed;
+  font-size: 22px;
+  opacity: 0.25;
+  animation: float 12s linear infinite;
+}
+
+@keyframes float {
+  from {transform: translateY(100vh) rotate(0deg);}
+  to {transform: translateY(-10vh) rotate(360deg);}
+}
+
+/* animasi masuk */
+.fade-in {
+  animation: fade 1.5s ease forwards;
+}
+@keyframes fade {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+h1 {
+  margin-top: 50px;
+  font-size: 2.6em;
+  color: #bcd9ff;
+}
+
+p {
+  max-width: 600px;
+  margin: auto;
+  line-height: 1.7;
+}
+
+/* cake */
+.cake {
+  position: relative;
+  width: 220px;
+  height: 120px;
+  background: linear-gradient(180deg,#6ea8ff,#3b6edc);
+  border-radius: 12px;
+  margin: 50px auto;
+}
+
+.candle {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 40px;
+  background: #f5faff;
+}
+
+.flame {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 22px;
+  background: radial-gradient(circle,#ffd166,#ff8500);
+  border-radius: 50%;
+  animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker {
+  0% {transform: translateX(-50%) scale(1);}
+  50% {transform: translateX(-50%) scale(0.9);}
+  100% {transform: translateX(-50%) scale(1);}
+}
+
+.smoke {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: rgba(220,230,255,0.6);
+  border-radius: 50%;
+  animation: smoke 2s ease forwards;
+}
+
+@keyframes smoke {
+  from {opacity: 1; transform: translate(-50%,0) scale(1);}
+  to {opacity: 0; transform: translate(-50%,-40px) scale(2);}
+}
+
+/* gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
+  gap: 15px;
+  padding: 20px;
+}
+.gallery img {
+  width: 100%;
+  border-radius: 12px;
+  transition: transform 0.4s;
+}
+.gallery img:hover {
+  transform: scale(1.06);
+}
+
+/* video */
+video {
+  width: 85%;
+  max-width: 500px;
+  border-radius: 18px;
+  margin: 30px 0;
+}
+
+/* button */
+button {
+  padding: 10px 22px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(90deg,#6ea8ff,#9bc2ff);
+  color: #0a1a3a;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 10px;
+}
+</style>
+</head>
+
+<body class="fade-in">
+
+<!-- bunga -->
+<div class="flower" style="left:10%">🌸</div>
+<div class="flower" style="left:30%;animation-delay:3s">🌷</div>
+<div class="flower" style="left:55%;animation-delay:6s">🌼</div>
+<div class="flower" style="left:75%;animation-delay:9s">🌸</div>
+
+<h1>happy birthday, keyzia monica</h1>
+
+<p>
+di hari spesial ini, aku harap kamu dikelilingi rasa tenang, hangat,
+dan cinta yang tulus. semoga setiap doa kecil kamu hari ini
+perlahan menemukan jalannya.
+</p>
+
+<p><i>make a wish, then blow the candle 🤍</i></p>
+
+<div class="cake" onclick="blowCandle()">
+  <div class="candle">
+    <div class="flame" id="flame"></div>
+  </div>
+</div>
+
+<button onclick="toggleMusic()">music on / off</button>
+
+<audio id="music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<h2>memories</h2>
+<div class="gallery">
+  <img src="foto1.jpg">
+  <img src="foto2.jpg">
+  <img src="foto3.jpg">
+</div>
+
+<h2>a message for you</h2>
+<video controls>
+  <source src="video.mp4" type="video/mp4">
+</video>
+
+<script>
+let blown = false
+let music = document.getElementById('music')
+
+function blowCandle() {
+  if (blown) return
+  blown = true
+
+  let flame = document.getElementById('flame')
+  flame.style.display = 'none'
+
+  let smoke = document.createElement('div')
+  smoke.className = 'smoke'
+  document.querySelector('.candle').appendChild(smoke)
+}
+
+function toggleMusic() {
+  if (music.paused) {
+    music.play()
+  } else {
+    music.pause()
+  }
+}
+</script>
+
+</body>
+</html>
